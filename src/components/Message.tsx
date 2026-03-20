@@ -1,5 +1,5 @@
-import { Check, CheckCheck } from "lucide-react"
 import type { MessageDto } from "../types/message"
+import { MessageChecked } from "./MessageChecked"
 
 export const Message = ({text, time, isMine, read}: MessageDto) => {
   return (
@@ -9,15 +9,13 @@ export const Message = ({text, time, isMine, read}: MessageDto) => {
       <p>
         {text}
       </p>
-      <span className="flex items-center text-sm self-end gap-0.5">
+      <span className="flex items-center text-sm self-end gap-1">
         <p >
           {time}
         </p>
         <div>
           {
-            isMine && (read
-            ? <CheckCheck className="size-4"/>
-            : <Check className="size-4"/>)
+            isMine && <MessageChecked read={read}/>
           }
         </div>
       </span>
