@@ -1,5 +1,5 @@
-import { LogOut, Search, Send } from "lucide-react"
-import { MessageList } from "./components/MessageList"
+import { LogOut, Search} from "lucide-react"
+import { ChatSection } from "./sections/chat/ChatSection"
 
 function App() {
   return (
@@ -56,52 +56,7 @@ function App() {
 
         </aside>
 
-        <main className="min-w-0 flex flex-col">
-          <header className="flex flex-col px-4 py-2 bg-panel rounded-tr-2xl ">
-            <div className="flex flex-col items-start grow truncate">
-              <h1 className="text-2xl font-medium text-start -mb-1">
-                dkiara
-              </h1>
-              <div className="text-text-secondary flex items-center gap-1">
-                <div className="size-1.5 bg-text-secondary rounded-full"></div>
-                <p>offline</p>
-              </div>
-            </div>
-          </header>
-
-          <MessageList messages={
-            [
-              {
-                time:"19:53",
-                text:"Hola este es un mensaje muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuy largooooooooooooooooooooooooo", 
-                isMine: true, 
-                read: false  
-              },
-              {
-                time:"19:53",
-                text:"Hola este es un mensaje muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuy largooooooooooooooooooooooooo", 
-                isMine: true, 
-                read: true  
-              },
-              {
-                time:"19:53",
-                text:"Hola este es un mensaje", 
-                isMine: false, 
-                read: false  
-              }
-            ]
-          }/>
-          
-          <footer className="bg-panel rounded-br-2xl">
-            <form className="flex">
-              <input type="text" placeholder="Send a message..." className="bg-card text-lg px-4 py-1 grow m-2 rounded-4xl placeholder:text-text-secondary outline-0"/>
-              <button className="m-2 ml-0 size-10 flex items-center justify-center bg-primary-dark rounded-full hover:bg-primary-deeper cursor-pointer transition-colors hover:text-text-secondary">
-                <Send className="mr-0.5 mt-1"/>
-              </button>
-            </form>
-          </footer>
-
-        </main>
+        <ChatSection user={{id:"asdad", username:"canelona"}} />
 
       </main>
     </div>
