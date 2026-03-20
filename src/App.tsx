@@ -1,4 +1,5 @@
 import { Check, CheckCheck, LogOut, Search, Send } from "lucide-react"
+import { Message } from "./components/Message"
 
 function App() {
   return (
@@ -69,44 +70,24 @@ function App() {
           </header>
 
           <section className="flex flex-col-reverse grow">
-            <article className="text-xl px-4 py-2 bg-primary-dark self-end rounded-2xl mb-3 mx-3 flex flex-col max-w-2/3">
-              <p>
-                Hola este es un mensaje muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuy largooooooooooooooooooooooooo
-              </p>
-              <span className="flex items-center text-sm self-end gap-0.5">
-                <p >
-                  19:53
-                </p>
-                <div>
-                  <Check className="size-4"/>
-                </div>
-              </span>
-            </article>
-
-            <article className="text-xl px-4 py-2 bg-primary-dark self-end rounded-2xl mb-0.5 mx-3 flex flex-col max-w-2/3">
-              <p>
-                Hola este es un mensaje muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuy largooooooooooooooooooooooooo
-              </p>
-              <span className="flex items-center gap-0.5 text-sm self-end">
-                <p >
-                  19:53
-                </p>
-                <div>
-                  <CheckCheck className="size-4"/>
-                </div>
-              </span>
-            </article>
-
-            <article className="text-xl px-4 py-2 bg-panel self-start rounded-2xl mb-2 mx-3 flex flex-col max-w-2/3">
-              <p>
-                Hola este es un mensaje
-              </p>
-              <span className="flex text-sm self-end">
-                <p className="text-text-secondary">
-                  19:53
-                </p>
-              </span>
-            </article>
+            <Message 
+              timeStamp="19:53" 
+              messageText="Hola este es un mensaje muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuy largooooooooooooooooooooooooo"
+              isMine={true}
+              read={false}
+            />
+            <Message 
+              timeStamp="19:53" 
+              messageText="Hola este es un mensaje muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuy largooooooooooooooooooooooooo"
+              isMine={true}
+              read={true}
+            />
+            <Message 
+              timeStamp="19:53" 
+              messageText="Hola este es un mensaje"
+              isMine={false}
+              read={false}
+            />
           </section>
 
           <footer className="bg-panel rounded-br-2xl">
