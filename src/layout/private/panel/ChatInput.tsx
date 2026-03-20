@@ -1,6 +1,6 @@
 import { Send } from "lucide-react"
 
-export const FooterChatSection = () => {
+export const ChatInput = () => {
   return (
     <footer className="bg-panel rounded-br-2xl">
       <form className="flex">

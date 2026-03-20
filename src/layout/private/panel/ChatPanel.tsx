@@ -1,12 +1,11 @@
-import { MessageList } from "../../components/MessageList"
-import type { User } from "../../types/user"
-import { FooterChatSection } from "./FooterChatSection"
-import { HeaderChatSection } from "./HeaderChatSection"
+import { MessageList } from "../../../components/MessageList"
+import { ChatHeader } from "./ChatHeader"
+import { ChatInput } from "./ChatInput"
 
-export const ChatSection = ({ user } : {user: User}) => {
+export const ChatPanel = () => {
   return (
     <main className="min-w-0 flex flex-col">
-      <HeaderChatSection username={user.username} status={true}/>
+      <ChatHeader username="canela" status={true}/>
 
       <MessageList messages={
         [
@@ -31,7 +30,7 @@ export const ChatSection = ({ user } : {user: User}) => {
         ]
       }/>
       
-      <FooterChatSection />
+      <ChatInput />
 
     </main>
   )

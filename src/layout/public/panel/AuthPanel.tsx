@@ -1,7 +1,7 @@
-export const AuthSection = () => {
+export const AuthPanel = () => {
   return (
     <form className="w-2/3 m-auto flex flex-col gap-2">
-      <div className="bg-primary-dark text-center text-lg py-2 rounded-2xl">
+      <div className="bg-primary-dark text-center text-lg py-2 rounded-2xl hidden">
         <p>
           Usuario ya registrado
         </p>
