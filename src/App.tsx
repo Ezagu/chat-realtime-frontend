@@ -1,5 +1,5 @@
-import { Check, CheckCheck, LogOut, Search, Send } from "lucide-react"
-import { Message } from "./components/Message"
+import { LogOut, Search, Send } from "lucide-react"
+import { MessageList } from "./components/MessageList"
 
 function App() {
   return (
@@ -69,27 +69,29 @@ function App() {
             </div>
           </header>
 
-          <section className="flex flex-col-reverse grow">
-            <Message 
-              timeStamp="19:53" 
-              messageText="Hola este es un mensaje muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuy largooooooooooooooooooooooooo"
-              isMine={true}
-              read={false}
-            />
-            <Message 
-              timeStamp="19:53" 
-              messageText="Hola este es un mensaje muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuy largooooooooooooooooooooooooo"
-              isMine={true}
-              read={true}
-            />
-            <Message 
-              timeStamp="19:53" 
-              messageText="Hola este es un mensaje"
-              isMine={false}
-              read={false}
-            />
-          </section>
-
+          <MessageList messages={
+            [
+              {
+                time:"19:53",
+                text:"Hola este es un mensaje muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuy largooooooooooooooooooooooooo", 
+                isMine: true, 
+                read: false  
+              },
+              {
+                time:"19:53",
+                text:"Hola este es un mensaje muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuy largooooooooooooooooooooooooo", 
+                isMine: true, 
+                read: true  
+              },
+              {
+                time:"19:53",
+                text:"Hola este es un mensaje", 
+                isMine: false, 
+                read: false  
+              }
+            ]
+          }/>
+          
           <footer className="bg-panel rounded-br-2xl">
             <form className="flex">
               <input type="text" placeholder="Send a message..." className="bg-card text-lg px-4 py-1 grow m-2 rounded-4xl placeholder:text-text-secondary outline-0"/>

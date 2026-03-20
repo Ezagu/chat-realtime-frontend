@@ -1,26 +1,17 @@
 import { Check, CheckCheck } from "lucide-react"
+import type { MessageDto } from "../types/message"
 
-export const Message = ({
-  messageText, 
-  timeStamp, 
-  isMine,
-  read
-} : { 
-  messageText: string, 
-  isMine: boolean,
-  timeStamp: string,
-  read: boolean
-}) => {
+export const Message = ({text, time, isMine, read}: MessageDto) => {
   return (
     <article 
       className={`text-xl px-4 py-2   rounded-2xl mb-3 mx-3 flex flex-col max-w-2/3 ${isMine ? "bg-primary-dark self-end" : "bg-panel self-start"}`}
     >
       <p>
-        {messageText}
+        {text}
       </p>
       <span className="flex items-center text-sm self-end gap-0.5">
         <p >
-          {timeStamp}
+          {time}
         </p>
         <div>
           {
