@@ -1,23 +1,28 @@
-import { useAuth } from "../../../hooks/useAuth"
+import type { ReactNode } from "react"
+import { useAuthForm } from "../../../hooks/useAuthForm"
+
+const ErrorAlert = ({children}: {children: ReactNode}) => {
+  return (
+    <div className="bg-red-800 text-center text-lg py-2 rounded-2xl">
+      <p>
+        {children}
+      </p>
+    </div>
+  )
+}
 
 export const AuthPanel = () => {
-
-  const {error, handleChange, signup, login} = useAuth()
+  const {error, handleChange, handleLogin, handleRegister} = useAuthForm()
 
   return (
     <form className="w-2/3 m-auto flex flex-col gap-2">
 
       {
         error &&
-        (
-          <div className="bg-red-500 text-center text-lg py-2 rounded-2xl hidden">
-            <p>
-              {error}
-            </p>
-          </div>
-        )
+        <ErrorAlert>
+          {error}
+        </ErrorAlert>
       }
-      
 
       <label htmlFor="username" className="font-bold text-text-secondary">
         Username
@@ -44,7 +49,7 @@ export const AuthPanel = () => {
       <button 
         type="button" 
         className="bg-primary-dark py-2 text-lg font-semibold rounded-2xl cursor-pointer hover:bg-primary-deeper mt-4"
-        onClick={login}
+        onClick={handleLogin}
       >
         Log In
       </button>
@@ -52,7 +57,7 @@ export const AuthPanel = () => {
       <button 
         type="button" 
         className="bg-text-primary text-primary-dark py-2 text-lg font-semibold rounded-2xl cursor-pointer hover:bg-text-secondary"
-        onClick={signup}
+        onClick={handleRegister}
       >
         Sign Up
       </button>
