@@ -12,7 +12,7 @@ const ErrorAlert = ({children}: {children: ReactNode}) => {
 }
 
 export const AuthPanel = () => {
-  const {error, handleChange, handleLogin, handleRegister} = useAuthForm()
+  const {error, loading, handleChange, handleLogin, handleRegister} = useAuthForm()
 
   return (
     <form className="w-2/3 m-auto flex flex-col gap-2">
@@ -48,16 +48,18 @@ export const AuthPanel = () => {
 
       <button 
         type="button" 
-        className="bg-primary-dark py-2 text-lg font-semibold rounded-2xl cursor-pointer hover:bg-primary-deeper mt-4"
+        className={`bg-primary-dark py-2 text-lg font-semibold rounded-2xl hover:bg-primary-deeper mt-4 ${loading ? 'bg-primary-deeper' : 'cursor-pointer'}`}
         onClick={handleLogin}
+        disabled={loading}
       >
         Log In
       </button>
       
       <button 
         type="button" 
-        className="bg-text-primary text-primary-dark py-2 text-lg font-semibold rounded-2xl cursor-pointer hover:bg-text-secondary"
+        className={`bg-text-primary text-primary-dark py-2 text-lg font-semibold rounded-2xl  hover:bg-text-secondary ${loading ? 'bg-text-secondary' : 'cursor-pointer'}`}
         onClick={handleRegister}
+        disabled={loading}
       >
         Sign Up
       </button>
