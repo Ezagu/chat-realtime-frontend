@@ -1,11 +1,48 @@
-import { Search } from "lucide-react"
+import { Search, X } from "lucide-react"
 import { UserStatus } from "./UserStatus"
 import { useSearchUsers } from "../hooks/useSearchUsers"
+import type { User } from "../types/user"
 
+
+const ListUsers = ({users}: {users: User[]}) => {
+  return (
+    <ul className="flex flex-col gap-2 p-2">
+      {
+        users.map((user) => (
+          <button className="cursor-pointer px-4 py-2 text-lg rounded-2xl bg-panel flex justify-between hover:bg-surface" key={user.id}>
+            {user.username}
+            <UserStatus status={false} />
+          </button>
+        ))
+      }
+    </ul>
+  )
+}
+
+const LoadingUsers = () => {
+  return (
+    <p className="w-full text-center my-4">
+      Searching users...
+    </p>
+  )
+}
+
+const UserNotFound = () => {
+  return (
+    <p className="w-full text-center my-4 text-red-300">
+      User not found
+    </p>
+  )
+}
+
+const SearchResult = ({users, loading}: {users: User[], loading: boolean}) => {
+  if(loading) return <LoadingUsers/>
+  if(users.length === 0) return <UserNotFound />
+  return <ListUsers users={users}/>
+}
 
 export const SearchUsers = () => {
-
-  const {handleChange, search, users} = useSearchUsers()
+  const {handleChange, search, users, loading, clearSearch} = useSearchUsers()
 
   return (
     <div className="relative">
@@ -15,33 +52,20 @@ export const SearchUsers = () => {
           className="w-full placeholder:text-text-secondary pl-2 outline-0"
           placeholder="Search users"
           onChange={handleChange}
+          value={search}
         />
+        {search && (
+          <button onClick={clearSearch} className="cursor-pointer text-text-secondary">
+            <X />
+          </button>
+        )}
       </label>
-      {
-        search &&
-        (
-        <div className="absolute backdrop-blur-2xl w-full rounded-2xl -mt-2">
-          <ul className="flex flex-col gap-2 p-2">
-            {JSON.stringify(users)}
-            {/* <button className="cursor-pointer px-4 py-2 text-lg rounded-2xl bg-panel flex justify-between hover:bg-surface">
-              Kiara
-              <UserStatus status={false} />
-            </button>
-            <button className="cursor-pointer px-4 py-2 text-lg rounded-2xl bg-panel flex justify-between hover:bg-surface">
-              Kiara
-              <UserStatus status={true} />
-            </button>
-            <button className="cursor-pointer px-4 py-2 text-lg rounded-2xl bg-panel flex justify-between hover:bg-surface">
-              Kiara
-              <UserStatus status={true} />
-            </button> */}
-          </ul>
-        </div>
-        )
-      }
       
+      {search && (
+        <div className="absolute backdrop-blur-2xl w-full rounded-2xl -mt-2">
+          <SearchResult users={users} loading={loading}/>
+        </div>
+      )}
     </div>
-    
   )
-  
 }
