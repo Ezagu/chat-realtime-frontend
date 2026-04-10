@@ -1,3 +1,4 @@
+import ReactTimeAgo from "react-time-ago"
 import { useMainChatContext } from "../hooks/useMainChatContext"
 import type { ChatVM } from "../types/chat"
 import { MessageChecked } from "./MessageChecked"
@@ -34,7 +35,7 @@ export const ChatCard = ({ chat } : {chat: ChatVM}) => {
           chat.lastMessage.isMine && <MessageChecked read={chat.lastMessage.read}/>
         }
         <span className="ml-1 -mr-2 text-text-secondary">
-          {chat.lastMessage.time}
+          <ReactTimeAgo date={new Date(chat.lastMessage.time).getTime()} />
         </span>
       </main>
     </button>

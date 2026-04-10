@@ -1,5 +1,6 @@
 import type { MessageVM } from "../types/message"
-import { MessageChecked } from "./MessageChecked"
+import ReactTimeAgo from "react-time-ago"
+import { CheckCheck } from "lucide-react"
 
 export const Message = ({ message }: {message: MessageVM}) => {
   return (
@@ -10,12 +11,12 @@ export const Message = ({ message }: {message: MessageVM}) => {
         {message.text}
       </p>
       <span className="flex items-center text-sm self-end gap-1">
-        <p >
-          {message.time}
+        <p>
+          <ReactTimeAgo date={new Date(message.time)} />
         </p>
         <div>
           {
-            message.isMine && <MessageChecked read={message.read}/>
+            message.isMine && <CheckCheck className={`size-4 ${message.read && 'text-blue-600'}`}/>
           }
         </div>
       </span>

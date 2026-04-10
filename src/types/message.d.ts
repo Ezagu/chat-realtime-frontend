@@ -1,14 +1,14 @@
 export type MessageVM = {
   id: string
   text: string
-  time: string
+  time: Date
   isMine: boolean
   read: boolean
 }
 
 export type Message = {
   id: string
-  createdAt: string
+  createdAt: Date
   content: string
   userId: string
   chatId: string
