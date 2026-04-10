@@ -1,8 +1,15 @@
-import type { MessageDto } from "./message"
+import type { Message, MessageVM } from "./message"
 import type { User } from "./user"
 
-export type ChatDto = {
+export type Chat = {
   id: string
-  lastMessage: MessageDto
+  messages: Message[]
+  users: User[]
+  createdAt: string
+}
+
+export type ChatVM = {
+  id: string
   user: User
+  lastMessage: MessageVM
 }

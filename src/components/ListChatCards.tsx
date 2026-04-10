@@ -1,7 +1,7 @@
-import type { ChatDto } from "../types/chat"
+import type { ChatVM } from "../types/chat"
 import { ChatCard } from "./ChatCard"
 
-export const ListChatCards = ({ chats } : { chats: ChatDto[] }) => {
+export const ListChatCards = ({ chats } : { chats: ChatVM[] }) => {
   return (
     <section className="flex gap-3 flex-col">
       {
