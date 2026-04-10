@@ -1,21 +1,21 @@
-import type { MessageDto } from "../types/message"
+import type { MessageVM } from "../types/message"
 import { MessageChecked } from "./MessageChecked"
 
-export const Message = ({text, time, isMine, read}: MessageDto) => {
+export const Message = ({ message }: {message: MessageVM}) => {
   return (
     <article 
-      className={`text-xl px-4 py-2   rounded-2xl mb-3 mx-3 flex flex-col max-w-2/3 ${isMine ? "bg-primary-dark self-end" : "bg-panel self-start"}`}
+      className={`text-xl px-4 py-2   rounded-2xl mb-3 mx-3 flex flex-col max-w-2/3 ${message.isMine ? "bg-primary-dark self-end" : "bg-panel self-start"}`}
     >
       <p>
-        {text}
+        {message.text}
       </p>
       <span className="flex items-center text-sm self-end gap-1">
         <p >
-          {time}
+          {message.time}
         </p>
         <div>
           {
-            isMine && <MessageChecked read={read}/>
+            message.isMine && <MessageChecked read={message.read}/>
           }
         </div>
       </span>
