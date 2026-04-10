@@ -7,7 +7,8 @@ export const loginService = async (userAuth: UserAuth) => {
     body: JSON.stringify(userAuth),
     headers: {
       'Content-Type': 'application/json'
-    }
+    },
+    credentials: 'include'
   })
 
   const res = await req.json()
@@ -25,7 +26,8 @@ export const registerService = async (userAuth: UserAuth) => {
     body: JSON.stringify(userAuth),
     headers: {
       'Content-Type': 'application/json'
-    }
+    },
+    credentials: 'include'
   })
 
   const res = await req.json()
@@ -42,10 +44,25 @@ export const logoutService = async () => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
-    }
+    }, 
+    credentials: 'include'
   })
 
   if(!req.ok) {
     throw new Error('Internal Server Error')
   }
+}
+
+export const getMeService = async () => {
+  const req = await fetch(url + 'users/me', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    credentials: 'include'
+  })
+
+  if(!req.ok) throw new Error('There is no active session')
+
+  return await req.json() as User
 }
