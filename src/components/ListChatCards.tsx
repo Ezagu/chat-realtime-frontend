@@ -1,11 +1,14 @@
-import type { ChatVM } from "../types/chat"
+import { useChatsContext } from "../hooks/useChatsContext"
 import { ChatCard } from "./ChatCard"
 
-export const ListChatCards = ({ chats } : { chats: ChatVM[] }) => {
+export const ListChatCards = () => {
+
+  const {chats} = useChatsContext()
+
   return (
     <section className="flex gap-3 flex-col">
       {
-        chats.map(chat => (
+        chats?.map(chat => (
           <ChatCard chat={chat}/>
         ))
       }

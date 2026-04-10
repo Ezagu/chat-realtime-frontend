@@ -1,7 +1,7 @@
-import type { ChatDto } from "../types/chat"
+import type { ChatVM } from "../types/chat"
 import { MessageChecked } from "./MessageChecked"
 
-export const ChatCard = ({ chat } : {chat: ChatDto}) => {
+export const ChatCard = ({ chat } : {chat: ChatVM}) => {
   return (
     <article 
       className={`bg-card hover:bg-card-hover p-2 px-4 border-r-4 rounded-xl cursor-pointer
