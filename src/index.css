@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin 'tailwind-scrollbar';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -15,4 +16,10 @@
   --color-text-secondary: #7A9BA6;
 
   --color-border: rgba(255,255,255,0.06)
+}
+
+@layer utilities {
+  .scrollbar-medium::-webkit-scrollbar {
+    width: 8px;
+  }
 }

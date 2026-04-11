@@ -16,6 +16,5 @@ export const disconnect = () => {
 }
 
 export const getSocket = () => {
-  if(!socket) throw new Error('Socket not inicialized')
   return socket
 }

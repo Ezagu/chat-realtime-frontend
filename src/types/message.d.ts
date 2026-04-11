@@ -14,3 +14,8 @@ export type Message = {
   chatId: string
   read: boolean
 }
+
+export type SendMessage = {
+  content: string
+  chatId: string
+}

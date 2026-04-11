@@ -7,6 +7,8 @@ export const useSocketConnection = () => {
   useEffect(() => {
     const socket = getSocket()
 
+    if(!socket) return setConnected(false)
+
     const onConnect = () => setConnected(true)
     const onDisconnect = () => setConnected(false)
 
