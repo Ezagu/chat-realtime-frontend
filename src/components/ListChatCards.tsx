@@ -9,7 +9,7 @@ export const ListChatCards = () => {
     <section className="flex gap-3 flex-col">
       {
         chats?.map(chat => (
-          <ChatCard chat={chat}/>
+          <ChatCard chat={chat} key={chat.id}/>
         ))
       }
     </section>

@@ -1,7 +1,7 @@
 import ReactTimeAgo from "react-time-ago"
 import { useMainChatContext } from "../hooks/useMainChatContext"
 import type { ChatVM } from "../types/chat"
-import { MessageChecked } from "./MessageChecked"
+import { CheckCheck } from "lucide-react"
 
 export const ChatCard = ({ chat } : {chat: ChatVM}) => {
 
@@ -32,7 +32,7 @@ export const ChatCard = ({ chat } : {chat: ChatVM}) => {
           {chat.lastMessage.text}
         </p>
         {
-          chat.lastMessage.isMine && <MessageChecked read={chat.lastMessage.read}/>
+          chat.lastMessage.isMine && <CheckCheck className={`size-4 ${chat.lastMessage.read && 'text-blue-600'}`}/>
         }
         <span className="ml-1 -mr-2 text-text-secondary">
           <ReactTimeAgo date={new Date(chat.lastMessage.time).getTime()} />
