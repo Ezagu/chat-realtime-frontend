@@ -4,9 +4,7 @@ let socket: Socket | null = null;
 
 export const connect = () => {
   if(socket?.connected) return socket
-
   socket = io('http://localhost:3900', {withCredentials: true})
-
   return socket
 }
 

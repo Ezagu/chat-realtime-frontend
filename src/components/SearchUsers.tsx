@@ -1,23 +1,7 @@
 import { Search, X } from "lucide-react"
-import { UserStatus } from "./UserStatus"
 import { useSearchUsers } from "../hooks/useSearchUsers"
 import type { User } from "../types/user"
-
-
-const ListUsers = ({users}: {users: User[]}) => {
-  return (
-    <ul className="flex flex-col gap-2 p-2">
-      {
-        users.map((user) => (
-          <button className="cursor-pointer px-4 py-2 text-lg rounded-2xl bg-panel flex justify-between hover:bg-surface" key={user.id}>
-            {user.username}
-            <UserStatus status={false} />
-          </button>
-        ))
-      }
-    </ul>
-  )
-}
+import { ListUsers } from "./ListUsers"
 
 const LoadingUsers = () => {
   return (

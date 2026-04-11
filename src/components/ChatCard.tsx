@@ -35,7 +35,10 @@ export const ChatCard = ({ chat } : {chat: ChatVM}) => {
           chat.lastMessage.isMine && <CheckCheck className={`size-4 ${chat.lastMessage.read && 'text-blue-600'}`}/>
         }
         <span className="ml-1 -mr-2 text-text-secondary">
-          <ReactTimeAgo date={new Date(chat.lastMessage.time).getTime()} />
+          <ReactTimeAgo 
+            date={new Date(chat.lastMessage.time).getTime()}
+            timeStyle='twitter'
+          />
         </span>
       </main>
     </button>

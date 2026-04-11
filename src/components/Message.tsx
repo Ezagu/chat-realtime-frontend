@@ -12,7 +12,10 @@ export const Message = ({ message }: {message: MessageVM}) => {
       </p>
       <span className="flex items-center text-sm self-end gap-1">
         <p>
-          <ReactTimeAgo date={new Date(message.time)} />
+          <ReactTimeAgo 
+            date={new Date(message.time)} 
+            timeStyle='twitter'
+          />
         </p>
         <div>
           {

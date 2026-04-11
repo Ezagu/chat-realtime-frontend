@@ -3,6 +3,7 @@ import { MainPanel } from "./layout/MainPanel"
 import { AuthProvider } from "./provider/AuthProvider"
 import { ChatsProvider } from "./provider/ChatsProvider"
 import { MainChatProvider } from "./provider/MainChatProvider"
+import { OnlineUsersProvider } from "./provider/OnlineUsersProvider"
 
 function App() {
   return (
@@ -11,8 +12,10 @@ function App() {
         <AuthProvider>
           <ChatsProvider>
             <MainChatProvider>
-              <Sidebar />
-              <MainPanel />
+              <OnlineUsersProvider>
+                <Sidebar />
+                <MainPanel />
+              </OnlineUsersProvider>
             </MainChatProvider>
           </ChatsProvider>
         </AuthProvider>
