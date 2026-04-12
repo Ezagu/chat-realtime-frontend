@@ -14,7 +14,7 @@ export const Message = ({ message }: {message: MessageVM}) => {
         <p>
           <ReactTimeAgo 
             date={new Date(message.time)} 
-            timeStyle='twitter'
+            timeStyle='mini-minute-now'
           />
         </p>
         <div>

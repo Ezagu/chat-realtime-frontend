@@ -5,11 +5,13 @@ import { useAuthContext } from "./useAuthContext"
 import { getMessages } from "../services/http/messageService"
 import { getSocket } from "../services/websocket/socketService"
 import { toMessageVM } from "../adapters/messageAdapter"
+import { useChatsContext } from "./useChatsContext"
 
 export const useMessages = () => {
   const [ messages, setMessages ] = useState<MessageVM[]>([])
   const { userIdentity } = useAuthContext()
   const { mainChat } = useMainChatContext()
+  const { setLastMessage } = useChatsContext()
   
   useEffect(() => {
     if(!mainChat || !userIdentity) return
@@ -24,6 +26,7 @@ export const useMessages = () => {
     const handleNewMessage = (message: Message) => {
       const mappedMessage = toMessageVM({message, myId: userIdentity.id})
       setMessages(prev => [mappedMessage, ...prev])
+      setLastMessage({chatId: mainChat.id, message: mappedMessage})
     }
 
     socket?.on('message:new', handleNewMessage)
@@ -31,7 +34,7 @@ export const useMessages = () => {
     return () => {
       socket?.off('message:new', handleNewMessage)
     }
-  }, [mainChat, userIdentity])
+  }, [mainChat, userIdentity, setLastMessage])
 
   const sendMessage = (message: SendMessage) => {
     const socket = getSocket()

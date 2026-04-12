@@ -37,7 +37,7 @@ export const ChatCard = ({ chat } : {chat: ChatVM}) => {
         <span className="ml-1 -mr-2 text-text-secondary">
           <ReactTimeAgo 
             date={new Date(chat.lastMessage.time).getTime()}
-            timeStyle='twitter'
+            timeStyle='mini-minute-now'
           />
         </span>
       </main>
