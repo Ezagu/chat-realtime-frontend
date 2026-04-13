@@ -4,12 +4,13 @@ import type { ChatVM } from "../types/chat"
 import { CheckCheck } from "lucide-react"
 
 export const ChatCard = ({ chat } : {chat: ChatVM}) => {
-
-  const {setMainChat} = useMainChatContext()
+  const { loadMainChat } = useMainChatContext()
 
   const handleClick = () => {
-    setMainChat(chat)
+    loadMainChat({ chat })
   }
+
+  if(!chat.id || !chat.lastMessage) return
 
   return (
     <button 

@@ -1,3 +1,5 @@
+import type { Chat } from "./chat"
+
 export type MessageVM = {
   id: string
   text: string
@@ -15,7 +17,12 @@ export type Message = {
   read: boolean
 }
 
+export type NewMessage = {
+  message: Message
+  chat: Chat
+}
+
 export type SendMessage = {
-  content: string
-  chatId: string
+  text: string
+  toUserId: string
 }

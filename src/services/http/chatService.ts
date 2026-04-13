@@ -7,6 +7,7 @@ export const getChatsServices = async (myId: string) => {
     credentials: 'include'
   })
   const chats = await req.json()
+  console.log(chats)
   const mappedChats = chats.map((chat: Chat) => (toChatVM({chat, myId})))
   return mappedChats as ChatVM[]
 }

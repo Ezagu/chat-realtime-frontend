@@ -1,4 +1,5 @@
 import { io, Socket } from "socket.io-client"
+import type { SendMessage } from "../../types/message";
 
 let socket: Socket | null = null;
 
@@ -15,4 +16,8 @@ export const disconnect = () => {
 
 export const getSocket = () => {
   return socket
+}
+
+export const sendMessageService = (message: SendMessage) => {
+  socket?.emit('message:send', message)
 }

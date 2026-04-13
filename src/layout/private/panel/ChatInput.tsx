@@ -1,18 +1,15 @@
 import { Send } from "lucide-react"
-import type { SendMessage } from "../../../types/message"
 import { useState } from "react"
+import { sendMessageService } from "../../../services/websocket/socketService"
 
-export const ChatInput = ({sendMessage, chatId}: {
-  sendMessage: (message: SendMessage) => void,
-  chatId: string
-}) => {
+export const ChatInput = ({toUserId}: {toUserId: string}) => {
   const [text, setText] = useState('')
 
   return (
     <footer className="bg-panel rounded-br-2xl">
       <form className="flex" onSubmit={e => {
         e.preventDefault()
-        sendMessage({content: text, chatId})
+        sendMessageService({text, toUserId})
         setText('')
       }}>
         <input 

@@ -9,7 +9,7 @@ export type Chat = {
 }
 
 export type ChatVM = {
-  id: string
+  id: string | null
   user: User
-  lastMessage: MessageVM
+  lastMessage: MessageVM | null
 }
