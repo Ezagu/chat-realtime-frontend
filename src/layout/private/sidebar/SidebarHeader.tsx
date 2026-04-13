@@ -2,11 +2,18 @@ import { LogOut } from "lucide-react"
 import { UserStatus } from "../../../components/UserStatus"
 import { useAuthContext } from "../../../hooks/useAuthContext"
 import { useSocketConnection } from "../../../hooks/useSocketConnection"
+import { useMainChatContext } from "../../../hooks/useMainChatContext"
 
 export const SidebarHeader = () => {
 
   const { userIdentity, logout } = useAuthContext()
   const { connected } = useSocketConnection()
+  const { clearMainChat } = useMainChatContext()
+
+  const handleClick = () => {
+    logout()
+    clearMainChat()
+  }
 
   return (
     <header className="flex w-full items-center border-b border-border px-4 py-2">
@@ -16,7 +23,7 @@ export const SidebarHeader = () => {
         </h1>
         <UserStatus status={connected} />
       </div>
-      <button className="cursor-pointer hover:text-red-500 transition-colors" onClick={logout}>
+      <button className="cursor-pointer hover:text-red-500 transition-colors" onClick={handleClick}>
         <LogOut />
       </button>
     </header>

@@ -11,17 +11,27 @@ import { toChatVM } from "../adapters/chatAdapter"
 
 export const MainChatProvider = ({children}: {children: ReactNode}) => {
   const { userIdentity } = useAuthContext()
-  const { chats, setLastMessage, addChat, moveChatToTop } = useChatsContext()
+  const { chats, setLastMessage, addChat, moveChatToTop, readLastMessage } = useChatsContext()
   const [mainChat, setMainChat] = useState<ChatVM>()
   const [messages, setMessages] = useState<MessageVM[]>([])
   
-  const clearMainChat = () => setMainChat(undefined)
+  const clearMainChat = () => {
+    clearMessages()
+    setMainChat(undefined)
+  }
 
   const clearMessages = () => setMessages([])
 
   const loadMainChat = ({ chat }: { chat: ChatVM }) => {
     clearMessages()
     setMainChat(chat)
+
+    // Leer mensajes
+    if(chat.id && !chat.lastMessage?.isMine && !chat.lastMessage?.read) {
+      const socket = getSocket()
+      socket?.emit('chat:read', chat.id)
+      readLastMessage({chatId: chat.id})
+    }
   }
 
   useEffect(() => {
