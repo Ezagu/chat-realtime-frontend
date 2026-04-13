@@ -21,7 +21,6 @@ export const OnlineUsersProvider = ({children}: {children: ReactNode}) => {
 
     const getInitialUsers = (users: UserId[]) => {
       setOnlineUsers(users)
-      console.log(users)
     }
 
     socket?.on('presence:initial', getInitialUsers)

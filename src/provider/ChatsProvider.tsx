@@ -28,7 +28,15 @@ export const ChatsProvider = ({children}: {children: ReactNode}) => {
   useEffect(() => {
     if(userIdentity?.id) {
       getChatsServices(userIdentity.id)
-        .then(chatsRes => setChats(chatsRes))
+        .then(chatsRes => {
+          // Ordenar por tiempo de last message
+          chatsRes.sort((a, b) => {
+            const timeA = a.lastMessage ? new Date(a.lastMessage.time).getTime() : 0
+            const timeB = b.lastMessage ? new Date(b.lastMessage.time).getTime() : 0
+            return timeB - timeA
+          })
+          setChats(chatsRes)
+        })
     }
 
     // Escuchar si leyeron mis chats
