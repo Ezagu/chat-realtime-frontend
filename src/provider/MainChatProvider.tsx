@@ -58,13 +58,20 @@ export const MainChatProvider = ({children}: {children: ReactNode}) => {
         // Poner chat en primer lugar
         moveChatToTop({ chatId: newMessage.chat.id })
       }
-
       const mappedMessage = toMessageVM({message: newMessage.message, myId: userIdentity.id})
-      setLastMessage({chatId: newMessage.message.chatId, message: mappedMessage})
-      // Si el mensaje es del chat principal, agregarlo
+      
+      // Si el mensaje es del chat principal
       if(newMessage.chat.id.toString() === mainChat?.id?.toString()) {
+        // Si no es mio, leerlo
+        if(newMessage.message.userId.toString() !== userIdentity.id.toString()) {
+          socket?.emit('chat:read', newMessage.chat.id)
+          mappedMessage.read = true
+        }
+        // Agregarlo a mensajes
         setMessages(prev => [mappedMessage, ...prev])
       }
+      //Setear lastMessage
+      setLastMessage({chatId: newMessage.message.chatId, message: mappedMessage})
     }
 
     socket?.on('message:new', handleNewMessage)
