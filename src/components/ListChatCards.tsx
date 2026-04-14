@@ -1,10 +1,7 @@
-import { useChatsContext } from "../hooks/useChatsContext"
+import type { ChatVM } from "../types/chat"
 import { ChatCard } from "./ChatCard"
 
-export const ListChatCards = () => {
-
-  const {chats} = useChatsContext()
-
+export const ListChatCards = ({ chats }: { chats: ChatVM[] }) => {
   return (
     <section className="flex gap-3 flex-col overflow-y-auto flex-1 min-h-0 scrollbar">
       {
