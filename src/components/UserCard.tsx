@@ -15,12 +15,12 @@ export const UserCard = ({user}: {user: User}) => {
         user,
         lastMessage: null
     }
-    loadMainChat({chat})
+    loadMainChat({ chat })
   }
 
   return (
     <button 
-      className="cursor-pointer px-4 py-2 text-lg rounded-2xl bg-panel flex justify-between hover:bg-surface" 
+      className="cursor-pointer px-4 py-2 text-lg rounded-2xl bg-panel flex justify-between hover:bg-surface shadow border border-surface" 
       key={user.id}
       onClick={handleClick}
     >

@@ -4,11 +4,11 @@ import { useChatsContext } from "../../../hooks/useChatsContext"
 
 const WithoutChats = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-full -mt-30 text-text-secondary">
-      <h2 className="text-xl font-bold text-text-primary">
+    <div className="flex flex-col items-center justify-center h-full pb-30 text-text-secondary text-center">
+      <h2 className="text-lg font-bold text-text-primary">
         You haven't started a conversation yet
       </h2>
-      <h3 className="text-lg font-bold">
+      <h3 className="font-bold">
         find someone to chat with!
       </h3>
     </div>

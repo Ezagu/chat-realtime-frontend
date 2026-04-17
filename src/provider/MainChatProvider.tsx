@@ -23,8 +23,7 @@ export const MainChatProvider = ({children}: {children: ReactNode}) => {
   const clearMessages = () => setMessages([])
 
   const loadMainChat = ({ chat }: { chat: ChatVM }) => {
-
-    if(chat.id?.toString() === mainChat?.id?.toString()) return
+    if(chat.id && (chat.id?.toString() === mainChat?.id?.toString())) return
 
     clearMessages()
     setMainChat(chat)
