@@ -23,18 +23,18 @@ export const ChatCard = ({ chat } : {chat: ChatVM}) => {
       }`}
       onClick={handleClick}
     >
-      <header className="flex gap-2 items-baseline">
+      <header className="flex justify-between gap-2 items-baseline">
         <h2 className="text-lg font-medium truncate">
           {chat.user.username}
         </h2>
       </header>
-      <main className="flex items-center">
-        <p className="grow truncate text-start">
-          {chat.lastMessage.text}
-        </p>
+      <main className="flex items-center gap-1">
         {
           chat.lastMessage.isMine && <CheckCheck className={`size-4 ${chat.lastMessage.read && 'text-blue-600'}`}/>
         }
+        <p className="grow truncate text-start">
+          {chat.lastMessage.text}
+        </p>
         <span className="ml-1 -mr-2 text-text-secondary">
           <ReactTimeAgo 
             date={new Date(chat.lastMessage.time).getTime()}
